@@ -11,13 +11,15 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import TransformComponent from './src/TransformComponent';
 import HoldingComponent from './src/HoldingComponent';
 import RotateComponent from './src/RotateComponent';
+import DoubleTabComponent from './src/DoubleTabComponent';
 
 const App = () => {
   return (
     <GestureHandlerRootView style={styles.container}>
       {/* <TransformComponent /> */}
       {/* <HoldingComponent /> */}
-      <RotateComponent />
+      {/* <RotateComponent /> */}
+      <DoubleTabComponent />
     </GestureHandlerRootView>
   );
 };

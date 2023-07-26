@@ -13,7 +13,7 @@ import Animated, {
   withSpring,
   withTiming,
 } from 'react-native-reanimated';
-import {getAngleFromThreePoint} from './Util/CalculateAngleFromThreePoint';
+import {getAngleFromThreePoint} from './Utils/CalculateAngleFromThreePoint';
 
 type Point = {
   x: number;
