@@ -44,10 +44,26 @@ const RotateComponent = () => {
     onActive(event, context) {
       const pointActive = {x: event.absoluteX, y: event.absoluteY};
       const pointOld = {x: context.x, y: context.y};
-      const num =
+      let num =
         (getAngleFromThreePoint(pointRef, pointOld, pointActive) * 180) /
         Math.PI;
-      angle.value = num + angle.value;
+      if (Number.isNaN(num)) {
+        num = 0;
+      } else {
+        // if (pointActive.x < pointRef.x && pointActive.y < pointOld.y) {
+        //   num = -num;
+        // }
+        // if (pointActive.x > pointRef.x && pointActive.y > pointOld.y) {
+        //   num = -num;
+        // }
+        if ((pointActive.x - pointRef.x) * (pointActive.y - pointOld.y) > 0) {
+          num = -num;
+        }
+      }
+      if (num + angle.value >= 0) {
+        angle.value = num + angle.value;
+      }
+
       context.x = pointActive.x;
       context.y = pointActive.y;
     },
