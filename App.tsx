@@ -12,6 +12,7 @@ import TransformComponent from './src/TransformComponent';
 import HoldingComponent from './src/HoldingComponent';
 import RotateComponent from './src/RotateComponent';
 import DoubleTabComponent from './src/DoubleTabComponent';
+import MoveComponent from './src/MoveComponent';
 
 const App = () => {
   return (
@@ -19,7 +20,8 @@ const App = () => {
       {/* <TransformComponent /> */}
       {/* <HoldingComponent /> */}
       {/* <RotateComponent /> */}
-      <DoubleTabComponent />
+      {/* <DoubleTabComponent /> */}
+      <MoveComponent />
     </GestureHandlerRootView>
   );
 };
