@@ -13,6 +13,7 @@ import HoldingComponent from './src/HoldingComponent';
 import RotateComponent from './src/RotateComponent';
 import DoubleTabComponent from './src/DoubleTabComponent';
 import MoveComponent from './src/MoveComponent';
+import ScrollViewPage from './src/ScrollView';
 
 const App = () => {
   return (
@@ -21,7 +22,8 @@ const App = () => {
       {/* <HoldingComponent /> */}
       {/* <RotateComponent /> */}
       {/* <DoubleTabComponent /> */}
-      <MoveComponent />
+      {/* <MoveComponent /> */}
+      <ScrollViewPage />
     </GestureHandlerRootView>
   );
 };
