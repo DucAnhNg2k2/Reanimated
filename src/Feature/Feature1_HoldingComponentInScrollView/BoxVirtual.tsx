@@ -45,12 +45,28 @@ const BoxVirtual = ({index, item, offSetX}: BoxProps) => {
   });
 
   const styleAnimated = useAnimatedStyle(() => {
+    // const is = isActive.value;
+    // if (is) {
+    //   return {
+    //     position: 'absolute',
+    //     top: -100,
+    //     left: index * (SIZE + 15),
+    //     transform: [{translateX: 0}, {translateY: 0}],
+    //   };
+    // } else {
+    //   return {
+    //     transform: [
+    //       {
+    //         translateX: aPosX.value - offSetX.value,
+    //       },
+    //       {translateY: aPosY.value},
+    //     ],
+    //   };
+    // }
     return {
       transform: [
         {
-          translateX: !isActive.value
-            ? aPosX.value - offSetX.value
-            : aPosX.value - offSetX.value,
+          translateX: aPosX.value - offSetX.value,
         },
         {translateY: aPosY.value},
       ],
