@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dimensions, StyleSheet} from 'react-native';
+import {Dimensions, ScrollView, StyleSheet} from 'react-native';
 import Animated, {
   Extrapolate,
   interpolate,
