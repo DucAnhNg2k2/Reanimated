@@ -11,7 +11,6 @@ import Animated, {
 } from 'react-native-reanimated';
 
 const SIZE = 50;
-
 type ContextType = {
   x: number;
   y: number;
@@ -26,6 +25,8 @@ interface BoxProps {
 const BoxVirtual = ({index, item, offSetX}: BoxProps) => {
   const aPosX = useSharedValue(0);
   const aPosY = useSharedValue(0);
+  const isActive = useSharedValue(false);
+
   const aGesture = useAnimatedGestureHandler<
     PanGestureHandlerGestureEvent,
     ContextType
@@ -38,43 +39,44 @@ const BoxVirtual = ({index, item, offSetX}: BoxProps) => {
       aPosX.value = event.translationX + context.x;
       aPosY.value = event.translationY + context.y;
     },
-    onEnd(event) {},
+    onEnd(event) {
+      isActive.value = true;
+    },
   });
 
   const styleAnimated = useAnimatedStyle(() => {
     return {
       transform: [
-        {translateX: aPosX.value - offSetX.value},
+        {
+          translateX: !isActive.value
+            ? aPosX.value - offSetX.value
+            : aPosX.value - offSetX.value,
+        },
         {translateY: aPosY.value},
       ],
     };
   }, []);
 
+  // [0, 50 + 15, 100 + 30, 150 + 45, ....] = (index) * (length + 15)
+  const styles = StyleSheet.create({
+    box: {
+      width: SIZE,
+      height: SIZE,
+      borderRadius: 15,
+      borderWidth: 1,
+      borderColor: 'red',
+      backgroundColor: item,
+      position: 'absolute',
+      top: 0,
+      left: index * (SIZE + 15),
+    },
+  });
+
   return (
     <PanGestureHandler onGestureEvent={aGesture}>
-      <Animated.View
-        style={[
-          {
-            backgroundColor: item,
-          },
-          styles.box,
-          styleAnimated,
-        ]}
-      />
+      <Animated.View style={[styles.box, styleAnimated]} />
     </PanGestureHandler>
   );
 };
-
-const styles = StyleSheet.create({
-  box: {
-    width: SIZE,
-    height: SIZE,
-    marginRight: 20,
-    marginBottom: 10,
-    borderRadius: 15,
-    borderWidth: 1,
-    borderColor: 'red',
-  },
-});
 
 export default BoxVirtual;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import Animated, {
   useAnimatedScrollHandler,
   useSharedValue,
@@ -7,7 +7,6 @@ import Animated, {
 import Box from './Box';
 import BoxVirtual from './BoxVirtual';
 
-const SIZE = 50;
 const aColors = [
   'red',
   'blue',
@@ -54,6 +53,7 @@ const Feature1_HoldingComponentInScrollView = () => {
           );
         })}
       </View>
+      <Text style={styles.title}> Holding Component In ScrollView </Text>
     </View>
   );
 };
@@ -61,7 +61,6 @@ const Feature1_HoldingComponentInScrollView = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
   },
   scrollView: {
@@ -75,6 +74,13 @@ const styles = StyleSheet.create({
     left: 0,
     display: 'flex',
     flexDirection: 'row',
+  },
+  title: {
+    position: 'absolute',
+    alignItems: 'center',
+    top: 15,
+    fontSize: 18,
+    fontWeight: '600',
   },
 });
 export default Feature1_HoldingComponentInScrollView;
